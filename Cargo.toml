@@ -1,0 +1,12 @@
+[package]
+name = "War3ResolutionEditor"
+version = "0.1.0"
+edition = "2021"
+authors = ["vSylva"]
+license = "MIT"
+
+[dependencies]
+winsafe = { version = "=0.0.20", features = ["gui", "user", "kernel"] }
+
+[build-dependencies]
+winres = "=0.1.12"
