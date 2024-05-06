@@ -2,15 +2,16 @@
 
 use winsafe::{co, gui, prelude::*, HKEY};
 
+const TITLE: &'static str = "War3ResolutionEditor";
+const KEY_PATH: &'static str = r"SOFTWARE\Blizzard Entertainment\Warcraft III\Video";
+
 fn main() {
-    unsafe {
-        window_main().run_main(None).unwrap();
-    };
+    window_main().run_main(None).unwrap();
 }
 
-unsafe fn window_main() -> gui::WindowMain {
+fn window_main() -> gui::WindowMain {
     let window_options = gui::WindowMainOpts {
-        title: "War3ResolutionEditor".to_owned(),
+        title: TITLE.to_owned(),
         size: (210, 76),
         class_icon: gui::Icon::Id(1),
         ..Default::default()
@@ -98,25 +99,25 @@ unsafe fn window_main() -> gui::WindowMain {
         }
 
         reg_current_user.RegSetKeyValue(
-            Some(r"SOFTWARE\Blizzard Entertainment\Warcraft III\Video"),
+            Some(KEY_PATH),
             Some("reswidth"),
             winsafe::RegistryValue::Dword(width),
         )?;
 
         reg_current_user.RegSetKeyValue(
-            Some(r"SOFTWARE\Blizzard Entertainment\Warcraft III\Video"),
+            Some(KEY_PATH),
             Some("resheight"),
             winsafe::RegistryValue::Dword(height),
         )?;
 
         reg_current_user.RegSetKeyValue(
-            Some(r"SOFTWARE\Blizzard Entertainment\Warcraft III\Video"),
+            Some(KEY_PATH),
             Some("cinematicwidth"),
             winsafe::RegistryValue::Dword(width),
         )?;
 
         reg_current_user.RegSetKeyValue(
-            Some(r"SOFTWARE\Blizzard Entertainment\Warcraft III\Video"),
+            Some(KEY_PATH),
             Some("cinematicheight"),
             winsafe::RegistryValue::Dword(height),
         )?;
